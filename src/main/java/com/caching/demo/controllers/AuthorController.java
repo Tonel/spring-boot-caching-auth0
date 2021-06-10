@@ -2,6 +2,7 @@ package com.caching.demo.controllers;
 
 import com.caching.demo.data.Author;
 import com.caching.demo.services.AuthorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +15,10 @@ import java.time.temporal.TemporalUnit;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/authors")
 public class AuthorController {
-
     private final AuthorService authorService;
-
-    @Autowired
-    public AuthorController(
-            AuthorService authorService
-    ) {
-        this.authorService = authorService;
-    }
 
     @GetMapping()
     public ResponseEntity<List<Author>> getAll() {
